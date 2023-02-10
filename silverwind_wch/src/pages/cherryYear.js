@@ -14,12 +14,11 @@ const CherryYear = () => {
 
     //To find the year + 1 from the input year and start calculation
     let newYear = parseInt(year, 10) + 1;
-    console.log(typeof newYear, newYear);
 
+    //Loop through unique values and if its the same size then its the next year
     while (true) {
       const yearStr = newYear.toString();
       const uniqueChars = new Set(yearStr);
-      console.log({ uniqueChars });
       if (uniqueChars.size === yearStr.length) {
         setCherryYear(newYear);
         break;
@@ -31,11 +30,13 @@ const CherryYear = () => {
     <div
       style={{
         width: "100%",
-        height: "300px",
+        height: "20%",
+        padding: "20px",
         backgroundColor: "gray",
         display: "flex",
         flexDirection: "center",
         alignItems: "center",
+        justifyContent: "center",
       }}
     >
       <form onSubmit={handleSubmit}>
@@ -46,6 +47,7 @@ const CherryYear = () => {
             id="year"
             value={year}
             onChange={(e) => setYear(e.target.value)}
+            maxLength={4}
           ></input>
           <button type="submit">Check next Cherry Year</button>
         </div>
